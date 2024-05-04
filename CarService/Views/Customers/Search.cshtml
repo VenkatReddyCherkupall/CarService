@@ -1,0 +1,38 @@
+﻿@*VenkatReddy Cherkupalli*@
+
+@model CustomerSearchViewModel
+
+<form asp-action="Search">
+    <div class="form-group">
+        <input asp-for="Customer.FName" class="form-control"/>
+        <input type="submit" value="Search for Cusotmer" class="btn btn-default"/>
+    </div>
+</form>
+
+<div class="text-danger">@Model.SearchError</div>
+
+@if (Model.ResultList.Count >0)
+{
+    <table class="table table-condensed table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Cusotmer Found.
+                </th>
+            </tr>
+        </thead>
+    <tbody>
+        @foreach (var c in Model.ResultList)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-controller="Customers class="  asp-route-id="@c.ID">@c.FName @c.LName</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+}

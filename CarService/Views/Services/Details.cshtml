@@ -1,0 +1,52 @@
+﻿@*VenkatReddy Cherkupalli*@
+
+@model CarService.Models.Service
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Service</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mechanic)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mechanic.FName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Vehicle)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Vehicle.VinNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ServiceDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ServiceDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ServiceCost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ServiceCost)
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.ServiceID" class=" btn btn-info">Edit</a> |
+    <a asp-action="Index" class="btn btn-info">Back to List</a>
+</div>

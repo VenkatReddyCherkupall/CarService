@@ -1,0 +1,68 @@
+﻿@*VenkatReddy Cherkupalli*@
+
+@model IEnumerable<CarService.Models.PartsUsed>
+
+@{
+    ViewData["Title"] = "Parts Used";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Parts Used</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-primary">Create New Parts Used</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Service)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PartsUsedID" class="btn btn-info">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PartsUsedID" class="btn btn-info">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PartsUsedID" class="btn btn-info">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Back to Home</a>
+</div>
+

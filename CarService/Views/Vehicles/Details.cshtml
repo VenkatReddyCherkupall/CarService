@@ -1,0 +1,84 @@
+﻿@*VenkatReddy Cherkupalli*@
+
+
+@model CarService.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Vehicle</h4>
+    <hr />
+    <dl class="row">
+                <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Customer.FName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VinNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VinNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Make)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Make)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+    </dl>
+</div>
+
+<div><h4>Services</h4> 
+    @if (Model.Services.Count > 0)
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Service Date</th>
+                    <th>Description</th> 
+                    <th> Service Cost</th> 
+                    <th>Mechanic</th>
+                </tr> </thead> <tbody> @foreach (var e in Model.Services)
+                {
+                    <tr>
+                        <td>@e.ServiceDate.ToString()</td> 
+                        <td>@e.Description</td>
+                        <td>@e.ServiceCost.ToString("c")</td>
+                        <td>@e.Mechanic.FName</td>
+                    </tr>
+                } </tbody> </table>
+    }
+    else
+    {
+        <div>No Services to show at this time.</div>
+    } </div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.VehicleID" class="btn btn-info">Edit</a> |
+    <a asp-action="Index" class="btn btn-info">Back to List</a>
+</div>
